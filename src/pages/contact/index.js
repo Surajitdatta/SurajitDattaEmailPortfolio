@@ -1,54 +1,52 @@
-import React, { useState } from "react";
-import * as emailjs from "emailjs-com";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { meta } from "../../content_option";
 import { Container, Row, Col, Alert } from "react-bootstrap";
+import { meta } from "../../content_option";
 import { contactConfig } from "../../content_option";
 
 export const ContactUs = () => {
-  const [formData, setFormdata] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     name: "",
     message: "",
     loading: false,
     show: false,
-    alertmessage: "",
+    alertMessage: "",
     variant: "",
   });
 
+  const formRef = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormdata({ loading: true });
-
-    const templateParams = {
-      from_name: formData.email,
-      user_name: formData.name,
-      to_name: contactConfig.YOUR_EMAIL,
-      message: formData.message,
-    };
+    setFormData({ ...formData, loading: true });
 
     emailjs
-      .send(
-        contactConfig.YOUR_SERVICE_ID,
-        contactConfig.YOUR_TEMPLATE_ID,
-        templateParams,
-        contactConfig.YOUR_USER_ID
+      .sendForm(
+        "service_x9rmya9", // Replace with your service ID
+        "template_dhuhzwh", // Replace with your template ID
+        formRef.current,
+        "6S3dON4PYi2rniiFQ" // Replace with your public key
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          setFormdata({
+        () => {
+          setFormData({
+            email: "",
+            name: "",
+            message: "",
             loading: false,
-            alertmessage: "SUCCESS! ,Thankyou for your messege",
+            alertMessage: "SUCCESS! Thank you for your message.",
             variant: "success",
             show: true,
           });
         },
         (error) => {
-          console.log(error.text);
-          setFormdata({
-            alertmessage: `Faild to send!,${error.text}`,
+          setFormData({
+            ...formData,
+            loading: false,
+            alertMessage: `Failed to send: ${error.text}`,
             variant: "danger",
             show: true,
           });
@@ -58,7 +56,7 @@ export const ContactUs = () => {
   };
 
   const handleChange = (e) => {
-    setFormdata({
+    setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
@@ -81,15 +79,14 @@ export const ContactUs = () => {
         <Row className="sec_sp">
           <Col lg="12">
             <Alert
-              //show={formData.show}
               variant={formData.variant}
               className={`rounded-0 co_alert ${
                 formData.show ? "d-block" : "d-none"
               }`}
-              onClose={() => setFormdata({ show: false })}
+              onClose={() => setFormData({ show: false })}
               dismissible
             >
-              <p className="my-0">{formData.alertmessage}</p>
+              <p className="my-0">{formData.alertMessage}</p>
             </Alert>
           </Col>
           <Col lg="5" className="mb-5">
@@ -101,18 +98,16 @@ export const ContactUs = () => {
               </a>
               <br />
               <br />
-              {contactConfig.hasOwnProperty("YOUR_FONE") ? (
+              {contactConfig.YOUR_FONE && (
                 <p>
                   <strong>Phone:</strong> {contactConfig.YOUR_FONE}
                 </p>
-              ) : (
-                ""
               )}
             </address>
             <p>{contactConfig.description}</p>
           </Col>
           <Col lg="7" className="d-flex align-items-center">
-            <form onSubmit={handleSubmit} className="contact__form w-100">
+            <form ref={formRef} onSubmit={handleSubmit} className="contact__form w-100">
               <Row>
                 <Col lg="6" className="form-group">
                   <input
@@ -120,7 +115,7 @@ export const ContactUs = () => {
                     id="name"
                     name="name"
                     placeholder="Name"
-                    value={formData.name || ""}
+                    value={formData.name}
                     type="text"
                     required
                     onChange={handleChange}
@@ -133,7 +128,7 @@ export const ContactUs = () => {
                     name="email"
                     placeholder="Email"
                     type="email"
-                    value={formData.email || ""}
+                    value={formData.email}
                     required
                     onChange={handleChange}
                   />

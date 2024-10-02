@@ -3,20 +3,115 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="author" content="John Doe">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Essential SEO Meta Tags -->
+    <meta name="description" content="Surajit Datta - Skilled MERN stack developer specializing in API integration, responsive, dynamic websites, and delivering high-quality results.">
+    <meta name="keywords" content="MERN stack developer, React developer, JavaScript, Node.js, MongoDB, API integration, responsive websites, Surajit Datta, web developer, developer portfolio, dynamic websites">
+    <meta name="author" content="Surajit Datta">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="revisit-after" content="1 day" />
+    
+    <!-- Google-specific SEO Tags -->
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="notranslate" />
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE" />
+    
+    <!-- Open Graph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Surajit Datta - MERN Stack Developer">
+    <meta property="og:description" content="Explore Surajit Datta's portfolio showcasing expertise in MERN stack development, API integration, and dynamic, responsive web design.">
+    <meta property="og:image" content="%PUBLIC_URL%/profile.jpg">
+    <meta property="og:url" content="https://surajitresponsive.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Surajit Datta Portfolio">
+    
+    <!-- Twitter Card for Social Sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Surajit Datta - MERN Stack Developer">
+    <meta name="twitter:description" content="Discover Surajit Datta's expertise in MERN stack development, API integration, and responsive web design.">
+    <meta name="twitter:image" content="%PUBLIC_URL%/profile.jpg">
+    <meta name="twitter:site" content="@SurajitDatta">
+    
+    <!-- Schema Markup for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://surajitresponsive.netlify.app/",
+      "logo": "%PUBLIC_URL%/logo.png",
+      "name": "Surajit Datta Portfolio",
+      "sameAs": [
+        "https://www.facebook.com/surajit.datta.92505/",
+        "https://github.com/Surajitdatta",
+        "https://www.linkedin.com/in/surajit-datta-751600155"
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (JSON-LD) for Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Surajit Datta",
+      "jobTitle": "MERN Stack Developer",
+      "url": "https://surajitresponsive.netlify.app/",
+      "sameAs": [
+        "https://www.facebook.com/surajit.datta.92505/",
+        "https://github.com/Surajitdatta",
+        "https://www.linkedin.com/in/surajit-datta-751600155"
+      ],
+      "description": "Surajit Datta is a skilled MERN stack developer specializing in API integration, responsive web design, and dynamic websites.",
+      "image": "https://surajitresponsive.netlify.app/profile.jpg"
+    }
+    </script>
 
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://surajitresponsive.netlify.app/"
+      }]
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://surajitresponsive.netlify.app/" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    
+    <!-- Preconnect and Font Loading Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Title for SEO -->
+    <title>Surajit Datta - MERN Stack Developer | API Integration | Responsive Websites</title>
+
+    <!-- Optimized CSS Preloading -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!-- Breadcrumb Navigation Markup -->
+    <!-- <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="https://surajitresponsive.netlify.app/">Home</a></li>
+      </ol>
+    </nav> -->
 </body>
 
 </html>
